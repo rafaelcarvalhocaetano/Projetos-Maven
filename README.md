@@ -1,2 +1,1 @@
-# Projetos-Maven
-JSP ....
+Full SpringBoot, Securoty, Data JPA, MVC.
