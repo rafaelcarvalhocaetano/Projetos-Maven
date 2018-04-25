@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+<title>Cobranças</title>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+	crossorigin="anonymous">
+</head>
+<body>
+</div>
+<div class="container" style="margin-top: 1%;">
+<div class="card text-center">
+	<div class="card-header">
+		<h3>Formulário de Cadastro</h3>
+	</div>
+	<div class="card-body">
+	<form method="post" class="form-inline">
+	
+	<label for="nome">Nome</label>
+	<input type="text" name="nome" id="nome" value="" placeholder="Nome" class="form-control col-sm-2 mx-sm-2"/>
+	  local <input type="text" name="local" id="local" value="" placeholder="LOCAL" class="form-control col-sm-2 mx-sm-2"/>
+	  data <input type="text" name="data" id="data" value="" placeholder="DATA" class="form-control col-sm-2 mx-sm-2"/>
+	  horario <input type="text" name="horario" id="horario" value="" placeholder="Horário" class="form-control col-sm-2 mx-sm-2"/>
+	
+	<button type="submit" class="btn btn-success">Cadastrar</button>
+	</form>
+	</div>
+</div>
+
+<table class="table table-hover table-striped" style="margin-top: 3%;">
+<thead>
+	<tr class="thead bg-dark" style="color: #FFF;">
+		<th>ID</th>
+		<th>NOME</th>
+		<th>LOCAL</th>
+		<th>DATA</th>
+		<th>HORÁRIO</th>
+	</tr>
+</thead>
+<tbody>
+	<tr th:each="itens : ${lista}">
+	
+		<td><span th:text="${itens.id}"></span></td>
+		<td>
+			<a th:href="${(#mvc.url('EC#detalhesEvento').arg(0, itens.id)).build()}">
+				<span th:text="${itens.nome}"></span> 
+			</a>
+		</td>
+		<td> <span th:text="${itens.local}"></span> </td>
+		<td> <span th:text="${itens.data}"></span> </td>
+		<td> <span th:text="${itens.horario}"></span> </td>
+		
+	</tr>
+</tbody>
+</table>
+</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+		integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+		integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+		crossorigin="anonymous"></script>
+</body>
+</html>
