@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+<title>Cobranças</title>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="container">
+		<div class="card text-center">
+
+			<div class="card-header">
+				<h3>Cadastro</h3>
+			</div>
+			<div class="card-body">
+
+				<a href="/cadastro" class="btn btn-primary">Cadastrar</a>
+			</div>
+
+			<div class="card-footer">
+				<table class="table table-hover table-striped table-bordered">
+					<thead>
+						<tr class="bg-dark" style="color: #FFF;">
+							<th>Código</th>
+							<th>Nome do Evento</th>
+							<th>Data do Evento</th>
+							<th>Horário do Evento</th>
+							<th>Local do Evento</th>
+							<th>Valor</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="list : ${lista}">
+							<td th:text="${list.id}"></td>
+							<td th:text="${list.nome}"></td>
+							<td th:text="${list.data}"></td>
+							<td th:text="${list.horario}"></td>
+							<td th:text="${list.local}"></td>
+							<td th:text="${list.valor}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+		integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+		integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+		crossorigin="anonymous"></script>
+</body>
+</html>
