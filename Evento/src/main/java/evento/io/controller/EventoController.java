@@ -1,7 +1,10 @@
 package evento.io.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,6 +37,14 @@ public class EventoController {
 	@RequestMapping(value="/cadastro", method=RequestMethod.POST)
 	public String cadastro( Evento e) {
 		er.save(e);
+		return "redirect:/cadastro";
+	}
+	
+	@RequestMapping(value="/deletar", method=RequestMethod.GET)
+	public String deletar(Long id) {
+		
+		er.deleteById(id);
+		
 		return "redirect:/cadastro";
 	}
 

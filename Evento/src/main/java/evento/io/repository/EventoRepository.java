@@ -7,5 +7,6 @@ import evento.io.model.Evento;
 
 @Repository
 public interface EventoRepository extends JpaRepository<Evento, Long>{
+	
 
 }
