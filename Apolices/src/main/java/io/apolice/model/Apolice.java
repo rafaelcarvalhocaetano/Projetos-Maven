@@ -1,8 +1,11 @@
 package io.apolice.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Apolice {
@@ -10,71 +13,94 @@ public class Apolice {
 	
 	@Id
 	@GeneratedValue
-	private Long codigo;
-	private String nome;
-	private String numeroApolice;
-	private String cpf;
-	private String rua;
-	private String cidade;
-	private String estado;
+	private Long id;
+	
+	@OneToMany
+	private List<Cliente> cliente;
+	
+	private String codigo;
+	private String dataInicio;
+	private String dataFim;
+	private String valor;
+	private String status;
+	
 	
 	public Apolice() {
 		// TODO Auto-generated constructor stub
 	}
-	public Apolice(String nome, String numeroApolice, String cpf, String rua, String cidade, String estado) {
-		this.nome = nome;
-		this.numeroApolice = numeroApolice;
-		this.cpf = cpf;
-		this.rua = rua;
-		this.cidade = cidade;
-		this.estado = estado;
+	
+	
+
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public List<Cliente> getCliente() {
+		return cliente;
 	}
 
 
 
+	public void setCliente(List<Cliente> cliente) {
+		this.cliente = cliente;
+	}
 
-	public Long getCodigo() {
+
+
+	public Apolice(Long id, List<Cliente> cliente, String codigo, String dataInicio, String dataFim, String valor,
+			String status) {
+		super();
+		this.id = id;
+		this.cliente = cliente;
+		this.codigo = codigo;
+		this.dataInicio = dataInicio;
+		this.dataFim = dataFim;
+		this.valor = valor;
+		this.status = status;
+	}
+
+
+
+	public String getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(Long codigo) {
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
-	public String getNome() {
-		return nome;
+	public String getDataInicio() {
+		return dataInicio;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setDataInicio(String dataInicio) {
+		this.dataInicio = dataInicio;
 	}
-	public String getNumeroApolice() {
-		return numeroApolice;
+	public String getDataFim() {
+		return dataFim;
 	}
-	public void setNumeroApolice(String numeroApolice) {
-		this.numeroApolice = numeroApolice;
+	public void setDataFim(String dataFim) {
+		this.dataFim = dataFim;
 	}
-	public String getCpf() {
-		return cpf;
+	public String getValor() {
+		return valor;
 	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setValor(String valor) {
+		this.valor = valor;
 	}
-	public String getRua() {
-		return rua;
+	public String getStatus() {
+		return status;
 	}
-	public void setRua(String rua) {
-		this.rua = rua;
+	public void setStatus(String status) {
+		this.status = status;
 	}
-	public String getCidade() {
-		return cidade;
-	}
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
-	public String getEstado() {
-		return estado;
-	}
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

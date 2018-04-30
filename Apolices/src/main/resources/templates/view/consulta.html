@@ -21,29 +21,43 @@
 </head>
 <body>
 
-		<nav class="navbar navbar-dark bg-dark">
+	<nav class="navbar navbar-dark bg-dark">
 		<ul class="nav">
-			<li class="nav-item">
-				<a class="nav-link active" th:href="@{/ProvaJavaEE/home}">Prova
-					Java
-				</a>
-			</li>
+			<li class="nav-item"><a class="nav-link active"
+				th:href="@{/ProvaJavaEE/home}">Prova Java </a></li>
 			<li class="nav-item dropdown" style="background-color: #CCC;"><a
 				class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
 				role="button" aria-haspopup="true" aria-expanded="false">Consulta</a>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" th:href="@{/ProvaJavaEE/consulta}">Consulta Código</a> <a
-						class="dropdown-item" href="/ProvaJavaEE/apolices">Comprar Apolice</a>
-				</div>
-			</li>
+					<a class="dropdown-item" th:href="@{/ProvaJavaEE/consulta}">Consulta
+						Código</a> <a class="dropdown-item" href="/ProvaJavaEE/apolices">Comprar
+						Apolice</a>
+				</div></li>
 		</ul>
 	</nav>
 	<div class="container">
-	<div class="card">
-		<div class="card-body">		
-		<h1>Bem Vindo !</h1>
+		<div class="card">
+			<div class="title">
+				<h3 style="margin: 1% 0 0 1%;">Consulta Apolice</h3>
+			</div>
+			<div class="dropdown-divider"></div>
+			<div class="card-body">
+				<form method="post" class="form-inline con-sm-12">
+					<div class="">
+						<label for="numero" class="col-form-label">Número</label>
+					</div>
+
+					<div class="col-sm-3">
+						<input type="text" name="numero" id="numero" value=""
+							class="form-control" placeholder="Número da Apolice">
+					</div>
+
+					<div class="botao" style="margin-left: 60%;">
+						<button type="submit" class="btn btn-success">Buscar</button>
+					</div>
+				</form>
+			</div>
 		</div>
-	</div>
 	</div>
 
 

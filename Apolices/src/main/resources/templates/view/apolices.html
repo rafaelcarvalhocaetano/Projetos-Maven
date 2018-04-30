@@ -21,7 +21,7 @@
 </head>
 <body>
 
-		<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-dark">
 		<ul class="nav">
 			<li class="nav-item">
 				<a class="nav-link active" th:href="@{/ProvaJavaEE/home}">Prova
@@ -40,8 +40,32 @@
 	</nav>
 	<div class="container">
 	<div class="card">
+	<div class="card-header">
+	<span>Comprar Apolices</span>
+	</div>
 		<div class="card-body">		
-		<h1>Bem Vindo !</h1>
+		<form method="post">
+		
+		DADOS DO CLIENTE
+		<br/>
+		nome:<input type="text" name="nome" id="nome" value="">
+		CPF:<input type="text" name="cpf" id="cpf" value="">
+		
+		<div class="dropdown-divider"></div>
+		
+		DADOS DO APOLICE
+		<br/>
+		
+		Código Produto:<input type="text" name="codigo" id="codigo" value="">
+		Data de Início:<input type="text" name="inicio" id="inicio" value="">
+		Data Final:<input type="text" name="fim" id="fim" value="">
+		Valor do Prémio:<input type="text" name="premio" id="premio" value="">
+		Status:<input type="text" name="status" id="status" value="">	
+		
+		<button type="submit">Salvar</button>
+		</form>
+		
+		
 		</div>
 	</div>
 	</div>
