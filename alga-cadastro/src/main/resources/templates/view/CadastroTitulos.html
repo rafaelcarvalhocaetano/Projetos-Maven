@@ -1,112 +1,68 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="~{view/LayoutPadrao}">
 <head>
-
-<title>Cobranças</title>
-<meta charset="UTF-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport" content="width=device-width" />
-
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-	crossorigin="anonymous">
-
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
-	integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-	crossorigin="anonymous">
-	
-	<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+<title>Cadastro</title>
 </head>
-<body>
 
-	<nav class="navbar navbar-inverse navbar-static-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                  Rafael
-                </a>
-            </div>
-        </div>
-    </nav>
-	<form class="form-horizontal" method="post"  action="/titulos">
-	
-		<div class="alert alert-success alert-dismissible">
-			
-			<span>Título Cadastrado com sucesso</span>
+<section layout:fragment="conteudo">
+	<form class="form-horizontal" method="post" action="/titulos">
+
+		<div class="alert alert-success alert-dismissible"
+			th:if="${!#strings.isEmpty(mensagem)}">
+			<span th:text="${mensagem}"></span>
 		</div>
-	
-	
+
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h1 class="panel-title">Novo título</h1>
+				<div class="clearfix">
+					<h1 class="panel-title" style="float: left;">Novo Título</h1>
+					<a class="btn btn-link rf-cadastro" style="float: right;"
+						th:href="@{/titulos}">Pesquisa Título</a>
+				</div>
 			</div>
+		
 
-			<div class="panel-body">
-				<div class="form-group">
-					<label for="descricao" class="col-sm-2 control-label">Descrição</label>
-					<div class="col-sm-4">
-						<input type="text" class="form-control" id="descricao" name="descricao"/>
-					</div>
+		<div class="panel-body">
+			<div class="form-group">
+				<label for="descricao" class="col-sm-2 control-label">Descrição</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="descricao"
+						name="descricao" />
 				</div>
-				<div class="form-group">
-					<label for="dataVencimento" class="col-sm-2 control-label">Data
-						de vencimento</label>
-					<div class="col-sm-2">
-						<input type="text" class="form-control" id="dataVencimento" name="dataVencimento"/>
-					</div>
+			</div>
+			<div class="form-group">
+				<label for="dataVencimento" class="col-sm-2 control-label">Data
+					de vencimento</label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" id="dataVencimento"
+						name="dataVencimento" />
 				</div>
-				<div class="form-group">
-					<label for="valor" class="col-sm-2 control-label">Valor</label>
-					<div class="col-sm-2">
-						<input type="text" class="form-control" id="valor" name="valor"/>
-					</div>
+			</div>
+			<div class="form-group">
+				<label for="valor" class="col-sm-2 control-label">Valor</label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" id="valor" name="valor" />
 				</div>
-				<div class="form-group">
-					<label for="status" class="col-sm-2 control-label">Status</label>
-					<div class="col-sm-2">
-						<select class="form-control" name="status">
-							<option value="PENDENTE">Pendente</option>
-							<option value="RECEBIDO">Recebido</option>
-						</select>
-					</div>
+			</div>
+			<div class="form-group">
+				<label for="status" class="col-sm-2 control-label">Status</label>
+				<div class="col-sm-2">
+					<select class="form-control" name="status">
+						<option th:each="status : ${todosStatusTitulos}"
+							th:value="${status}" th:text=${status.descricao}></option>
+					</select>
 				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-primary">Salvar</button>
-					</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary">Salvar</button>
 				</div>
 			</div>
 		</div>
+		</div>
 	</form>
-
-
-
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-		integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-		integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-		crossorigin="anonymous"></script>
-
-	<script defer
-		src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"
-		integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
-		crossorigin="anonymous"></script>
-</body>
+</section>
 </html>
