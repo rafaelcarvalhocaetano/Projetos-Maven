@@ -10,45 +10,53 @@
 
 <section layout:fragment="conteudo">
 
-<div class="panel panel-default">
-	<div class="panel-heading">
-	<div class="clearfix">
-		<h1 class="panel-title" style="float: left;">Pesquisa de Títulos</h1>
-		<a class="btn btn-link rf-cadastro" style="float: right;" th:href="@{/titulos/novo}">Novo Título</a>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="clearfix">
+				<h1 class="panel-title" style="float: left;">Pesquisa de
+					Títulos</h1>
+				<a class="btn btn-link rf-cadastro" style="float: right;"
+					th:href="@{/titulos/novo}">Novo Título</a>
+			</div>
+		</div>
+
+		<div class="panel-body">
+			<table class="table table-bordered table-striped">
+
+				<thead>
+					<tr>
+						<th class="text-center col-md-1">#</th>
+						<th>Descrição</th>
+						<th class="text-center col-md-2">Data de Vencimento</th>
+						<th class="text-center col-md-2">Valor</th>
+						<th class="text-center col-md-2">Status</th>
+						<th class="text-center col-md-1">Opções</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="itens : ${itens}">
+						<td th:text="${itens.codigo}"></td>
+						<td th:text="${itens.descricao}"></td>
+						<td class="text-center col-md-2"
+							th:text="${{itens.dataVencimento}}"></td>
+						<td class="text-right col-md-2" th:text="|R$ ${{itens.valor}}"></td>
+						<td class="text-center col-md-1"><span class="label label"
+							th:text="${itens.status.descricao}"
+							th:classappend="${#strings.toString(itens.status) == 'PENDENTE' ? 'label-danger' : 'label-success'}"></span>
+						</td>
+						<td class="text-center col-md-2">
+							<a class="btn btn-link btn-xs" href="/titulos/1" >
+								<span class="glyphicon glyphicon-pencil"></span>
+							</a>						
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6" th:if="${#lists.isEmpty(itens)}">Nenhum Item
+							Encontrado</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
-
-	<div class="panel-body">
-		<table class="table table-bordered table-striped">
-
-			<thead>
-				<tr>
-					<th class="text-center col-md-1">#</th>
-					<th>Descrição</th>
-					<th class="text-center col-md-2">Data de Vencimento</th>
-					<th class="text-center col-md-2">Valor</th>
-					<th class="text-center col-md-2">Status</th>
-					<th class="text-center col-md-1">Opções</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="itens : ${itens}">
-					<td th:text="${itens.codigo}"></td>
-					<td th:text="${itens.descricao}"></td>
-					<td class="text-center col-md-2" th:text="${{itens.dataVencimento}}"></td>
-					<td class="text-right col-md-2"  th:text="|R$ ${{itens.valor}}"></td>
-					<td class="text-center col-md-1">
-						<span class="label label" th:text="${itens.status.descricao}"
-						 th:classappend="${#strings.toString(itens.status) == 'PENDENTE' ? 'label-danger' : 'label-success'}"></span>
-					</td>
-					<td class="text-center col-md-2">Vazio</td>
-				</tr>
-				<tr>
-				<td colspan="6" th:if="${#lists.isEmpty(itens)}">Nenhum Item Encontrado</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</div>
 </section>
 </html>
