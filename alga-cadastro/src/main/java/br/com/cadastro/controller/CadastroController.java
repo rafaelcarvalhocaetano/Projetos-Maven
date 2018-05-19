@@ -2,7 +2,6 @@ package br.com.cadastro.controller;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,13 +62,22 @@ public class CadastroController {
 		return mav;
 	}
 	
-	@RequestMapping(value="{codigo}")
+	
+	@RequestMapping("{codigo}")
 	public ModelAndView edicao(@PathVariable("codigo") Titulo titulo) {
-		ModelAndView mv = new ModelAndView("view/CadastroTitulos"); 
-		mv.addObject(titulo);
-		return mv;
+		ModelAndView mav = new ModelAndView("view/CadastroTitulos");
+		mav.addObject(titulo);
+		return mav;
 	}
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+	public String excluir(@PathVariable Long id) {
+		tr.deleteById(id);
+		return "redirect:/titulos";
+		
+	}
+	
 
-	// -->>>> 2.15
+	// -->>>> 2.17
 
 }

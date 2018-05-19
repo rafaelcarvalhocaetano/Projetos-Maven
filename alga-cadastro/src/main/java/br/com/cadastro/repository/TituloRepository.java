@@ -6,4 +6,5 @@ import br.com.cadastro.model.Titulo;
 
 public interface TituloRepository extends CrudRepository<Titulo, Long>{
 
+	Titulo findByCodigo(Long codigo);
 }

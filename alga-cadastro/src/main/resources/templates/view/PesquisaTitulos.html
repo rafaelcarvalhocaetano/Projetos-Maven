@@ -45,8 +45,13 @@
 							th:classappend="${#strings.toString(itens.status) == 'PENDENTE' ? 'label-danger' : 'label-success'}"></span>
 						</td>
 						<td class="text-center col-md-2">
-							<a class="btn btn-link btn-xs" href="/titulos/1" >
+							<a class="btn btn-link btn-xs"  th:href="@{/titulos/{codigo}(codigo=${itens.codigo})}">
 								<span class="glyphicon glyphicon-pencil"></span>
+							</a>
+							
+							<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal"
+								th:attr="data-codigo=${itens.codigo}, data-descricao=${itens.descricao}">
+								<span class="glyphicon glyphicon-remove"></span>
 							</a>						
 						</td>
 					</tr>
@@ -57,6 +62,8 @@
 				</tbody>
 			</table>
 		</div>
+		
+		<div layout:insert="@{view/DialogoConfirmacaoExclusao}"></div>
 	</div>
 </section>
 </html>
