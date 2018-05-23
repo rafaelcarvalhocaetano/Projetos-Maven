@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.cadastro.model.StatusTitulos;
 import br.com.cadastro.model.Titulo;
 import br.com.cadastro.repository.TituloRepository;
+import br.com.cadastro.service.CadastroService;
 
 @Controller
 @RequestMapping("/titulos")
@@ -25,6 +26,10 @@ public class CadastroController {
 	@Autowired
 	private TituloRepository tr;
 
+	@Autowired
+	private CadastroService cs;
+	
+	
 	@RequestMapping("/novo")
 	public ModelAndView index() {
 
@@ -41,12 +46,18 @@ public class CadastroController {
 		if (errors.hasErrors()) {
 			return "view/CadastroTitulos";
 		}
-		tr.save(titulo);
-		//ModelAndView mav2 = new ModelAndView("redirect:/titulos/novo");
-		attributes.addFlashAttribute("mensagem","Título salvo com sucesso");
-		//mav.addObject("mensagem","Título salvo com sucesso");
-		//return mav2;
-		return "redirect:/titulos/novo";
+		try {
+			cs.salvar(titulo);
+			//ModelAndView mav2 = new ModelAndView("redirect:/titulos/novo");
+			attributes.addFlashAttribute("mensagem","Título salvo com sucesso");
+			//mav.addObject("mensagem","Título salvo com sucesso");
+			//return mav2;
+			return "redirect:/titulos/novo";
+		} catch (IllegalArgumentException e) {
+			errors.rejectValue("dataVencimento", null, e.getMessage());
+			return "view/CadastroTitulos";
+		}
+		
 	}
 
 	@ModelAttribute("todosStatusTitulos")
@@ -72,12 +83,12 @@ public class CadastroController {
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public String excluir(@PathVariable Long id) {
-		tr.deleteById(id);
+		cs.deletar(id);
 		return "redirect:/titulos";
 		
 	}
 	
 
-	// -->>>> 2.17
+	// -->>>> 3.6
 
 }
