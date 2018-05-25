@@ -1,3 +1,7 @@
+$('.js-atualizar-status').on('click', function(){
+	alert('clicado');
+});
+
 $('#confirmacaoExclusaoModal').on('show.bs.modal', function(event) {
 	let button = $(event.relatedTarget);
 	
@@ -16,8 +20,10 @@ $('#confirmacaoExclusaoModal').on('show.bs.modal', function(event) {
 	modal.find('.modal-body span').html('Tem certeza que deseja excluir o título <strong>' + descricaoTitulo + '</strong>?');
 });
 
-$( () => {
+$(function() {
 	$('[rel="tooltip"]').tooltip();
-	$('.js-currency').maskMoney({decimal: ',', thousands: '.', allowZero: true});
-	
+	$('.js-currency').maskMoney({decimal: ',', thousands: '.', allowZero: true});	
 });
+
+
+

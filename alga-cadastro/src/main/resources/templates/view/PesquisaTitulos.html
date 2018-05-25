@@ -21,8 +21,26 @@
 		</div>
 
 		<div class="panel-body">
+		
+			<form method="get" action="" class="form-horizontal">
+			<div class="form-group">
+				<div class="col-sm-4">
+				<div class="input-group">
+					<input class="form-control" placeholder="Qual título você está procurando" autofocus="autofocus"></input>
+					<span class="input-group-btn">
+						<button type="submit" class="btn btn-default">
+							<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+					</div>
+				</div>
+			</div>
+		
+			
+			</form>
+			
+		
 			<table class="table table-bordered table-striped">
-
 				<thead>
 					<tr>
 						<th class="text-center col-md-1">#</th>
@@ -40,7 +58,9 @@
 						<td class="text-center col-md-2"
 							th:text="${{itens.dataVencimento}}"></td>
 						<td class="text-right col-md-2" th:text="|R$ ${{itens.valor}}"></td>
+						
 						<td class="text-center col-md-1"><span class="label label"
+						th:attr="data-role=${itens.codigo}"
 							th:text="${itens.status.descricao}"
 							th:classappend="${#strings.toString(itens.status) == 'PENDENTE' ? 'label-danger' : 'label-success'}"></span>
 						</td>
@@ -54,7 +74,17 @@
 								th:attr="data-codigo=${itens.codigo}, data-descricao=${itens.descricao}"
 								title="Excluir" rel="tooltip" data-placement="right">
 								<span class="glyphicon glyphicon-remove"></span>
-							</a>						
+							</a>	
+							<a class="btn btn-link btn-xs js-atualizar-status"
+								th:if="${itens.pendente}"
+								th:attr="data-role=${itens.codigo}"
+								th:href="@{/titulos/{codigo}/receber(codigo = ${itens.codigo})}">
+								
+								
+								<span class="glyphicon glyphicon-check" 
+									title="Receber" rel="tooltip" data-placement="top"
+									></span>
+							</a>											
 						</td>
 					</tr>
 					<tr>
