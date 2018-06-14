@@ -9,13 +9,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-			.antMatchers("/projetos").hasAnyRole("PG_PROJETOS")
-			.antMatchers("/relatorio-equipe").hasAnyRole("PG_REL_EQUIPE")
-			.antMatchers("/relatorio-custos").hasAnyRole("PG_REL_PROJETOS")
-			//qual url o user precisa estar autenticado
-			.anyRequest()
-			.authenticated()
-			.and().formLogin().loginPage("/entrar").permitAll();
+		http.
+			authorizeRequests()
+				.antMatchers("/projetos").hasAnyRole("PG_PROJETOS")
+				.antMatchers("/relatorio-equipe").hasAnyRole("PG_REL_EQUIPE")
+				.antMatchers("/relatorio-custos").hasAnyRole("PG_REL_CUSTOS")
+				//qual url o user precisa estar autenticado
+				.anyRequest()
+				.authenticated()
+			.and().formLogin().loginPage("/entrar").permitAll()
+			.and().logout().logoutSuccessUrl("/entrar?logout").permitAll();
 	}
 }
