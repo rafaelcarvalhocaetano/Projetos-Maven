@@ -47,4 +47,12 @@ public class UserService {
 		return userRepository.findByName(email);
 	}
 
+	public boolean isUserPresent(String email) {
+		User u = userRepository.findByName(email);
+		if(u != null) {
+			return true;
+		}
+		return false;
+	}
+
 }
