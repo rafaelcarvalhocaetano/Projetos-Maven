@@ -3,7 +3,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+<<<<<<< HEAD
 	<groupId>com.evento</groupId>
+=======
+	<groupId>evento.io</groupId>
+>>>>>>> b3a4d9c0e0bc2663ea3982b9d3fdc0b6b3e8969c
 	<artifactId>Evento</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
@@ -14,7 +18,11 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
+<<<<<<< HEAD
 		<version>2.0.5.RELEASE</version>
+=======
+		<version>2.0.1.RELEASE</version>
+>>>>>>> b3a4d9c0e0bc2663ea3982b9d3fdc0b6b3e8969c
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -25,12 +33,22 @@
 	</properties>
 
 	<dependencies>
+<<<<<<< HEAD
 	<!-- 
+=======
+>>>>>>> b3a4d9c0e0bc2663ea3982b9d3fdc0b6b3e8969c
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+<<<<<<< HEAD
 	 -->
+=======
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+>>>>>>> b3a4d9c0e0bc2663ea3982b9d3fdc0b6b3e8969c
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -41,7 +59,15 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+<<<<<<< HEAD
 		
+=======
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+>>>>>>> b3a4d9c0e0bc2663ea3982b9d3fdc0b6b3e8969c
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

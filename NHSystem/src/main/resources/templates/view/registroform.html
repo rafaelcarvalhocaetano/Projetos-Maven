@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{fragmento/main_layout}" >
+<head>
+ <title>Formulário de Registros</title>
+</head>
+<body>
+
+     <div  layout:fragment="content" class="container mySpace">
+     <div class="alert alert-info" th:if="${existe}">
+     	<p class="text text-center"> Use um email valido ou existente</p>
+     </div>
+          <form th:action="@{/register}" th:object="${user}" method="post">
+          	<div class="form-group">
+          		<label for="email" class="form-control-label">Email</label>
+          		<input class="form-control" type="text" placeholder="Email@email.com" th:field="*{email}" id="email">
+          		<div class="alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+          			
+          		</div>
+          	</div>
+          	<div class="form-group">
+          		<label for="password" class="form-control-label">Senha</label>
+          		<input class="form-control" type="password" placeholder="Sua Senha" th:field="*{password}" id="password">
+          		<div class="alert alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
+          			
+          		</div>
+          	</div>
+          	<div class="form-group">
+          		<label for="name" class="form-control-label">Nome</label>
+          		<input class="form-control" type="text" placeholder="Nome" th:field="*{name}" id="name">
+          		<div class="alert alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+          			
+          		</div>
+          	</div>
+          	<input type="submit" class="btn btn-success" value="Submited" />
+          </form>
+     </div>
+</body>
+</html>
